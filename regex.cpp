@@ -559,7 +559,9 @@ void nfa::print_transition_table()
 void nfa::print_epsilon_closure(int state)
 {
 	set<int> closr;
-	set<int> closure = epsilon_closure(state,closr);
+	//set<int> closure = epsilon_closure(state,closr);
+	set<int> closure = epsilon_closure(state);
+		
 	set<int> :: iterator it;	
 
 	cout << "Epsilon closure for state " << state << endl;
@@ -570,6 +572,7 @@ void nfa::print_epsilon_closure(int state)
 	cout << endl;
 }
 
+/*
 set<int> nfa::epsilon_closure(int state)
 {
 	set<int> closr;
@@ -577,6 +580,7 @@ set<int> nfa::epsilon_closure(int state)
 
 	return closure;
 }
+*/
 
 set<int> nfa::epsilon_closure(set<int> states)
 {
@@ -599,7 +603,37 @@ set<int> nfa::epsilon_closure(set<int> states)
 	return closure;	
 }
 
+//Finding epsilon closure using a DFS (stack)
+set<int> nfa::epsilon_closure(int state)
+{
+	set<int> :: iterator it;
+	set<int> closure;						//Set to be returned
 
+	stack<int> dfs_stack;
+
+	dfs_stack.push(state);
+	closure.insert(state);	
+
+	while(!dfs_stack.empty())
+	{
+		int top_stack = dfs_stack.top();
+		dfs_stack.pop();
+		set<int> s = trans_table[top_stack][eps];
+		{
+			for(it=s.begin();it!=s.end();it++)
+			{
+				if(closure.count(*it)==0)
+				{
+					closure.insert(*it);
+					dfs_stack.push(*it);
+				}
+			}
+		}
+	}
+	return closure;
+}
+
+/*
 // STACK can also be used 
 set<int> nfa::epsilon_closure(int state,set<int> closr)
 {
@@ -630,6 +664,7 @@ set<int> nfa::epsilon_closure(int state,set<int> closr)
 	}
 	return closure;
 }
+*/
 
 set<int> nfa::move(set<int> states,char input_symbol)
 {
@@ -1132,7 +1167,12 @@ int main()
 	cout << "Enter the input program file name :" << flush;
 	//filename = "input_program";
 	cin >> filename;
-	ifstream fp_input(filename.c_str ());	
+	ifstream fp_input(filename.c_str ());
+	if(!fp_input)
+	{
+		cout << "Error in Opening File " << endl;
+		exit(1);
+	}	
 
 	string line;
 

@@ -51,7 +51,7 @@ class nfa{
 		
 		void print_transition_table();
 
-		set<int> epsilon_closure(int state,set<int> closr);
+		//set<int> epsilon_closure(int state,set<int> closr);
 		set<int> epsilon_closure(int state);
 		
 		void print_epsilon_closure(int state);
