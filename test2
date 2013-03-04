@@ -1,0 +1,6 @@
+Keywords		for|if|else|do|while|int|char
+WhiteSpaces		$|\t|\n
+Operator		+|-|/|%|\*|\||=|==|&|&&|<|>|<=|>=
+constants		[0-9]*
+preprocessor		#include|#define
+Special			,|;|{|}|\.|\(|\)
