@@ -1041,7 +1041,7 @@ int main()
 
 	/**************************************************/
 	cout<<"Input filename: "<<endl;
-	string filename = "test2";
+	string filename = "test1";
 	//   cin>>filename;
 
 	ifstream fpi(filename.c_str ());
@@ -1190,12 +1190,13 @@ int main()
 			//cout << "cur " << cur << endl;	
 		}
 	}
+	fp_input.close();	
 
 	cout << endl << " SYMBOL TABLE " << endl;
 	cout << "Identifier ID\t Identifier" << endl;
 	for(int i=0;i<identifiers.size();i++)
 	{
-		cout << "< " << i << ",\t" << identifiers[i]<< " >" << endl;
+		cout << "\t< " << i << ",\t" << identifiers[i]<< " >" << endl;
 	}
 
 	//cout << max_matched << endl;

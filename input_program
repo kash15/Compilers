@@ -1,10 +1,10 @@
-#include<2>
-
-int
+#include<pelu>
+//The main program
+int main()
 {
-	int=0;
-	for(int+=0;1<2;1++)
+	int i=0;
+	for(int j=0;j<10;j++)
 	{
-		1&2;
+		k=k*2;
 	}
 }
