@@ -1,7 +1,7 @@
+Keywords		for|if|else|do|while|int|char
 Identifier		([A-Z]|[a-z]|_)([a-z]|[0-9]|[A-Z])*
 WhiteSpaces		$
 Operator		+|-|/|%|=|==|&|&&|<|>|<=|>=
-Keywords		if|else|do|while|int|char
 constants		[0-9]*
 preprocessor		#include|#define
 Special			,|;|{|}

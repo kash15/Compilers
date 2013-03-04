@@ -965,7 +965,7 @@ int main()
 
 /**************************************************/
 	cout<<"Input filename: "<<endl;
-	string filename = "test";
+	string filename = "test1";
 	//   cin>>filename;
 
 	ifstream fpi(filename.c_str ());
@@ -1048,21 +1048,29 @@ int main()
 	string max_matched="";
 	string cur=input_string;
 	
+	string identifier_class_name="Identifier";
+
+	vector<string> identifiers;							//For storing the identifiers
+	//cout << "Enter the name of the identifier class " << endl;
+	//cin >> identifier_class_name;	
+
 	int dfa_matched=-1;	
 	while(cur!="")
 	{
 		dfa_matched=-1;
 		max_matched="";
-		i=no_of_dfa;
-		while(i--)
+		i=0;
+		while(i<no_of_dfa)
 		{
 			//cout << "Max Matched " << max_matched << endl;
 			out=dfa_vector[i].max_match(cur);
-			if (max_matched.length()<out.length())
+			if (max_matched.length() <out.length())
 			{
+				//cout << "DFA " << i << endl;
 				max_matched=out;
 				dfa_matched=i;			
-			}		
+			}
+			i++;		
 		}
 		if(max_matched=="")
 		{
@@ -1070,10 +1078,24 @@ int main()
 			break;
 		}
 		//cout << max_matched << endl;
-		cout << "< " << dfa_vector[dfa_matched].type << ",\t" << max_matched << " >" << endl;
+		cout << "< " << dfa_vector[dfa_matched].type << "," << max_matched << " >" << endl;
+		
+		
+
+		if(dfa_vector[dfa_matched].type==identifier_class_name)
+		{
+			identifiers.push_back(max_matched);
+		}
 		cur=cur.substr(max_matched.length());
 		//cout << "cur " << cur << endl;	
 	}
+	cout << endl << " SYMBOL TABLE " << endl;
+	cout << "\tIdentifier ID\t Identifier" << endl;
+	for(int i=0;i<identifiers.size();i++)
+	{
+		cout << "< " << i << "," << identifiers[i]<< " >" << endl;
+	}
+
 	//cout << max_matched << endl;
 	return 0;
 
