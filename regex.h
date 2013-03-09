@@ -42,22 +42,22 @@ class nfa{
 		nfa(string regex);				//constructor for nfa
 		void union_nfa(nfa &n);
 		void kleene_star();
-		void concatenate_nfa(nfa &n);
+		void concatenate_nfa(nfa &n);			//Concatenating two NFAs
 
 		void create_nfa(string regex);
-		string convert_to_basic_regex_format(string r);
-		string add_concatenate(string input);
-		string infix2postfix(string input);
+		string convert_to_basic_regex_format(string r);	// convert [a-d] to (a|b|c|d)
+		string add_concatenate(string input);		// convert ab to a.b
+		string infix2postfix(string input);		// convert a*.b|c to a*b.c|
 		
-		void print_transition_table();
+		void print_transition_table();			//print the transition table for NFA
 
 		//set<int> epsilon_closure(int state,set<int> closr);
-		set<int> epsilon_closure(int state);
+		set<int> epsilon_closure(int state);		// To find the epsilon closure of a state
 		
 		void print_epsilon_closure(int state);
 
 		set<int> epsilon_closure(set<int> states);
-		set<int> move(set<int> states,char input_symbol);
+		set<int> move(set<int> states,char input_symbol);	//Move function for converting nfa to dfa
 
 		dfa convert_nfa_to_dfa();
 };

@@ -1,4 +1,4 @@
-#include<pelu>
+#include<hello>
 //The main program
 int main()
 {
@@ -7,4 +7,5 @@ int main()
 	{
 		k=k*2;
 	}
+	return;
 }

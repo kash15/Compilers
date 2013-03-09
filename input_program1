@@ -1,6 +1,6 @@
-#include<pelu>
+#include<hello>
 //The main program
-/* Multi Line Comment */
+/* Other type of Comment */
 int main()
 {
 	int i=0;
@@ -12,4 +12,5 @@ int main()
 	{
 		d++;
 	}
+	return 0;
 }

@@ -247,7 +247,7 @@ void nfa::create_nfa(string regex)
 	{
 		// if the only character is not a valid character
 		//if(regex[0]=='*' || regex[0]=='|' || regex[0]=='(' || regex[0]==')' || regex[0]=='+' || regex[0]=='.' || regex[0]=='?' )
-		if(regex[0]=='*' || regex[0]=='|' || regex[0]=='(' || regex[0]==')' || regex[0]=='?' )
+		if(regex[0]=='*' || regex[0]=='|' || regex[0]=='(' || regex[0]==')' || regex[0]=='.' )
 		{
 			cout << "Invalid Regular Expression..!!" ;
 		}
@@ -1049,35 +1049,13 @@ string handle_escape(string regex)
 
 int main()
 {
-	/*
-	//string regex="(a*.b)|c.d";
-	string regex;
-	cin >> regex;
-	string postfix;
-	//postfix=infix2postfix(regex);
-	nfa n1(regex);
-	cout << postfix << endl;	
-	n1.print_transition_table() ;
-	n1.print_epsilon_closure(0);
-
-
-	dfa d=n1.convert_nfa_to_dfa();	
-
-	d.print_dfa_table();
-	d.print_final_states();
-	d.print_rejecting_states();
-
-	string input_string;
-	cin >> input_string;
-	//cout << d.is_match(input_string) << endl;
-	cout << d.max_match(input_string) << endl;
-	 */
+	
 	//Now for all the DFA's check the maximum substring that matches
 
 	/**************************************************/
-	cout<<"Input filename: "<<endl;
+	cout<<"Enter Input Reg Expressions filename: "<< flush;
 	string filename = "test1";
-	//   cin>>filename;
+	cin>>filename;
 
 	ifstream fpi(filename.c_str ());
 	if(!fpi)
@@ -1109,17 +1087,8 @@ int main()
 		cout <<" DONE" << endl;
 	}
 	fpi.close();
-	/*
-	   vector<dfa> dfas;
+	
 
-	   for(int i=0 ; i< regex.size(); i++){
-	   nfa n(regex[i]);
-	   dfas.push_back(n.to_dfa());    
-	   dfas[i].print_transitions ();
-	   dfas[i].print_final();
-	   cout<<endl;
-	   }
-	 */
 	/**************************************/
 
 	int n;
@@ -1214,20 +1183,23 @@ int main()
 			}
 			if(max_matched=="")
 			{
+				cout << "Token " << cur[0];
 				cout << "Matched in None..!!" << endl;
-				break;
+				cur = cur.substr(1);
 			}
+			else{
 			//cout << max_matched << endl;
-			cout << "< " << dfa_vector[dfa_matched].type << ",\t" << max_matched << "   >" << endl;
+				cout << "< " << dfa_vector[dfa_matched].type << ",\t" << max_matched << "   >" << endl;
 
 
 
-			if(dfa_vector[dfa_matched].type==identifier_class_name)
-			{
-				identifiers.push_back(max_matched);
-			}
-			cur=cur.substr(max_matched.length());
-			//cout << "cur " << cur << endl;	
+				if(dfa_vector[dfa_matched].type==identifier_class_name)
+				{
+					identifiers.push_back(max_matched);
+				}
+				cur=cur.substr(max_matched.length());
+				//cout << "cur " << cur << endl;	
+			}		
 		}
 	}
 	fp_input.close();	
