@@ -1,4 +1,4 @@
-Keywords		for|if|else|do|while|int|char
+Keywords		for|if|else|do|while|int|char|return|switch
 constants		[0-9]*
 Identifier		([A-Z]|[a-z]|_)([a-z]|[0-9]|[A-Z])*
 WhiteSpaces		$|\t|\n
