@@ -1,0 +1,16 @@
+#include<hello>
+//The main program
+/* Other type of Comment */
+int main()
+{
+	int i=0;
+	for(int j=0;j<10;j++)
+	{
+		k=k*2;
+	}
+	while(1)
+	{
+		d++;
+	}
+	return 0;
+}
